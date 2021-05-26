@@ -1,4 +1,4 @@
-title: 물민초's Blog
+title: WaterMinCho's Blog
 email: whalstn9@gmail.com
 description: 물민초의 개발블로그
 author: Start Bootstrap
@@ -6,9 +6,9 @@ baseurl: ""
 url: "https://watermincho.github.io/"
 
 # Social Profiles
-twitter_username: SBootstrap
+twitter_username:
 github_username: WaterMinCho
-facebook_username: 조민수
+facebook_username: profile.php?id=100002494292811
 instagram_username:
 linkedin_username:
 
