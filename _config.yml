@@ -10,15 +10,19 @@ twitter_username:
 github_username: WaterMinCho
 facebook_username: profile.php?id=100002494292811
 instagram_username:
-linkedin_username:
+linkedin_username: 민수-조-746827166
 
 # Add your google-analytics ID here to activate google analytics
 google_analytics: UA-XXXXXXXXX-X # out your google-analytics code
 
 # Build settings
 markdown: kramdown
-paginate: 5
+paginate: 15
 paginate_path: "/posts/page:num/"
+kramdown:
+  input: GFM
+highlighter: rouge
+
 plugins:
   - jekyll-feed
   - jekyll-paginate

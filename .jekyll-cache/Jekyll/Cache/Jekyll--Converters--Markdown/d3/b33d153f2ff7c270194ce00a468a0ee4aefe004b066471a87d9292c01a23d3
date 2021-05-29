@@ -1,6 +1,6 @@
-I"i8<h2 id="계산기"><strong>계산기</strong></h2>
+I"G8<h2 id="계산기"><strong>계산기</strong></h2>
 
-<h3 id="20210428-calculatorhtml"><code class="language-plaintext highlighter-rouge">2021.04.28</code> <a href="https://github.com/WaterMinCho/JS/blob/main/calculator.html">calculator.html</a></h3>
+<h3 id="20210428-calculatorhtml"><code class="language-plaintext highlighter-rouge">2021.04.28</code> <a href="https://github.com/WaterMinCho/JS/blob/main/calculator.html" target="\_blank">calculator.html</a></h3>
 
 <p><br /><br /></p>
 
@@ -13,26 +13,35 @@
   <li>=버튼 클릭 -&gt; numTwo값이 존재하는가? 숫자1과2를 연산자를 적용하여 계산한다: alert(‘두번째 수를 입력해주세요’)-&gt; 계산 결과를 화면에 출력한다. -&gt; 끝</li>
 </ol>
 
+<hr />
+
 <h3 id="배운-개념"><strong>배운 개념</strong></h3>
 
 <ul>
-  <li>
-    <p>변수를 바꾸면 화면을 바꾸는 것을 까먹지 말자! –&gt; <code class="language-plaintext highlighter-rouge">$result.value += "0";</code></p>
-  </li>
-  <li>
-    <p>함수의 (미친듯한)중복을 제거할 때</p>
+  <li>변수를 바꾸면 화면을 바꾸는 것을 까먹지 말자! –&gt; <code class="language-plaintext highlighter-rouge">$result.value += "0";</code></li>
+</ul>
 
+<hr />
+
+<ul>
+  <li>함수의 (미친듯한)중복을 제거할 때
     <ul>
       <li>달라지는 부분만 매개변수로 만들자</li>
       <li>고차함수를 써서 줄일 수 있다.(함수 내에 함수 존재)</li>
     </ul>
   </li>
+</ul>
+
+<hr />
+
+<ul>
   <li>
-    <p><code class="language-plaintext highlighter-rouge">고차함수</code><br />
-click(~~~, onClickNumber(‘n’));의 onClickNumber가 있는 자리는 함수자리이므로 “함수값으로 리턴된 값”이 와야한다!
+    <h4 id="고차함수">고차함수</h4>
+
+    <p>click(~~~, onClickNumber(‘n’));의 onClickNumber가 있는 자리는 함수자리이므로 “함수값으로 리턴된 값”이 와야한다!
 추가로 onClickNumber()함수를 불러오면 undefined가 자동으로 도출되기 때문에 return에 함수형으로 정의해야하며, 중복제거시에 유용한 고차함수를 써서 더 줄이자!<br /></p>
 
-    <h2 id="20210430-추가">2021.04.30 추가</h2>
+    <h3 id="20210430-추가">2021.04.30 추가</h3>
 
     <ul>
       <li>function()는 함수 자체가 아니다. function()은 함수의 리턴값을 가리킨다.</li>
@@ -65,13 +74,26 @@ click(~~~, onClickNumber(‘n’));의 onClickNumber가 있는 자리는 함수�
 <span class="dl">"</span><span class="s2">}</span><span class="dl">"</span>
 </code></pre></div>    </div>
 
-    <p>위와 같이 쿼테이션(““)으로 묶은 부분을 제거한거다.<br /><br /></p>
+    <p>위와 같이 쌍따옴표(““)로 묶은 부분을 제거한거다.<br /><br /></p>
   </li>
+</ul>
+
+<hr />
+
+<ul>
   <li>
-    <p><strong>event</strong>: click시 함수가 호출되면 브라우저가 <code class="language-plaintext highlighter-rouge">onClickNumber()</code>식으로 함수를 실행하는데, 그때 인자값으로 <code class="language-plaintext highlighter-rouge">event</code>를 넣어주는데 그때 함수에 <code class="language-plaintext highlighter-rouge">event</code>가 전달된다.</p>
+    <h3 id="event"><strong>event</strong></h3>
+    <ul>
+      <li>click시 함수가 호출되면 브라우저가 <code class="language-plaintext highlighter-rouge">onClickNumber()</code>식으로 함수를 실행하는데, 그때 인자값으로 <code class="language-plaintext highlighter-rouge">event</code>를 넣어주는데 그때 함수에 <code class="language-plaintext highlighter-rouge">event</code>가 전달된다.</li>
+    </ul>
   </li>
+</ul>
+
+<hr />
+
+<ul>
   <li>
-    <p>*<strong>*<em>중첩 반복문 해결하는 법</em>**</strong></p>
+    <p><strong>중첩 반복문 해결하는 법</strong></p>
 
     <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
@@ -88,10 +110,12 @@ click(~~~, onClickNumber(‘n’));의 onClickNumber가 있는 자리는 함수�
 </code></pre></div>    </div>
 
     <p><br /></p>
+  </li>
+</ul>
 
-    <ol>
-      <li>‘if문 다음에 나오는’ 공통된 절차를 각 분기점 내부에 넣는다.</li>
-    </ol>
+<ol>
+  <li>
+    <p>‘if문 다음에 나오는’ 공통된 절차를 각 분기점 내부에 넣는다.</p>
 
     <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
@@ -108,12 +132,9 @@ click(~~~, onClickNumber(‘n’));의 onClickNumber가 있는 자리는 함수�
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-
-    <p><br /></p>
-
-    <ol>
-      <li>분기점에서 ‘짧은 절차’부터 실행하게 if문을 작성한다.</li>
-    </ol>
+  </li>
+  <li>
+    <p>분기점에서 ‘짧은 절차’부터 실행하게 if문을 작성한다.</p>
 
     <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
@@ -131,12 +152,9 @@ click(~~~, onClickNumber(‘n’));의 onClickNumber가 있는 자리는 함수�
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-
-    <p><br /></p>
-
-    <ol>
-      <li>짧은 절차가 끝나면 <code class="language-plaintext highlighter-rouge">return</code>이나 <code class="language-plaintext highlighter-rouge">break</code>로 중단한다.</li>
-    </ol>
+  </li>
+  <li>
+    <p>짧은 절차가 끝나면 <code class="language-plaintext highlighter-rouge">return</code>이나 <code class="language-plaintext highlighter-rouge">break</code>로 중단한다.</p>
 
     <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
@@ -153,12 +171,9 @@ click(~~~, onClickNumber(‘n’));의 onClickNumber가 있는 자리는 함수�
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-
-    <p><br /></p>
-
-    <ol>
-      <li><code class="language-plaintext highlighter-rouge">else</code>를 제거한다.(이때 중첩 하나가 제거된다.)</li>
-    </ol>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">else</code>를 제거한다.(이때 중첩 하나가 제거된다.)</p>
 
     <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
@@ -174,15 +189,15 @@ click(~~~, onClickNumber(‘n’));의 onClickNumber가 있는 자리는 함수�
   <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>    </div>
-
-    <p><br /></p>
-
-    <ol>
-      <li>다음 중첩된 분기점이 나올 때 1~4의 과정을 반복한다.<br /><br /></li>
-    </ol>
   </li>
   <li>
-    <p>-, *, /는 문자열이 저절로 숫자로 바뀌기 때문에 <code class="language-plaintext highlighter-rouge">parseInt</code>를 안써도 된다.</p>
+    <p>다음 중첩된 분기점이 나올 때 1~4의 과정을 반복한다.</p>
   </li>
+</ol>
+
+<hr />
+
+<ul>
+  <li>-, *, /는 문자열이 저절로 숫자로 바뀌기 때문에 <code class="language-plaintext highlighter-rouge">parseInt</code>를 쓰지 않아도 된다.</li>
 </ul>
 :ET
