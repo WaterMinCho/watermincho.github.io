@@ -1,4 +1,4 @@
-I"~2<h2 id="숫자야구"><strong>숫자야구</strong></h2>
+I")2<h2 id="숫자야구"><strong>숫자야구</strong></h2>
 
 <h3 id="20210429-number-baseballhtml"><code class="language-plaintext highlighter-rouge">2021.04.29</code> <a href="https://github.com/WaterMinCho/JS/blob/main/number-baseball.html" target="\_blank">number-baseball.html</a></h3>
 
@@ -52,25 +52,22 @@
   <li>
     <p><strong>indexOf와 includes</strong></p>
 
-    <ul>
-      <li>
-        <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="dl">"</span><span class="s2">2345</span><span class="dl">"</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">===</span> <span class="mi">1</span><span class="p">;</span>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="dl">"</span><span class="s2">2345</span><span class="dl">"</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">===</span> <span class="mi">1</span><span class="p">;</span>
 <span class="dl">"</span><span class="s2">2345</span><span class="dl">"</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">===</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
 <span class="p">[</span><span class="dl">"</span><span class="s2">2</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">3</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">4</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">5</span><span class="dl">"</span><span class="p">].</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">"</span><span class="s2">5</span><span class="dl">"</span><span class="p">)</span> <span class="o">===</span> <span class="mi">3</span><span class="p">;</span>
 <span class="p">[</span><span class="dl">"</span><span class="s2">2</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">3</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">4</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">5</span><span class="dl">"</span><span class="p">].</span><span class="nx">indexOf</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">===</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="c1">// 요소의 자료형까지 같아야 한다.</span>
 <span class="dl">"</span><span class="s2">2345</span><span class="dl">"</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">===</span> <span class="kc">true</span><span class="p">;</span>
 <span class="p">[</span><span class="dl">"</span><span class="s2">2</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">3</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">4</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">5</span><span class="dl">"</span><span class="p">].</span><span class="nx">includes</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">===</span> <span class="kc">false</span><span class="p">;</span>
-</code></pre></div>        </div>
+</code></pre></div>    </div>
+
+    <ul>
+      <li>공통점
         <ul>
-          <li>공통점
-            <ul>
-              <li>배열이나 문자열에 원하는 값이 들어있는지 찾는 메서드다.</li>
-            </ul>
-          </li>
-          <li><code class="language-plaintext highlighter-rouge">indexOf</code>: 원하는 값이 들어있다면 해당 인덱스까지 알려주고, <strong>들어있지 않다면 -1반환</strong></li>
-          <li><code class="language-plaintext highlighter-rouge">includes</code>: 더 직관적으로 true/false를 반환한다.</li>
+          <li>배열이나 문자열에 원하는 값이 들어있는지 찾는 메서드다.</li>
         </ul>
       </li>
+      <li><code class="language-plaintext highlighter-rouge">indexOf</code>: 원하는 값이 들어있다면 해당 인덱스까지 알려주고, <strong>들어있지 않다면 -1반환</strong></li>
+      <li><code class="language-plaintext highlighter-rouge">includes</code>: 더 직관적으로 true/false를 반환한다.</li>
     </ul>
   </li>
 </ul>
