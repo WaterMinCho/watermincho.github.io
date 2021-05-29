@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: http://watermincho.github.io/sitemap.xml

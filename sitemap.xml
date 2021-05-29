@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">	  	  
+<!-- www.check-domains.com sitemap generator -->
+
+<url>
+   <loc>https://watermincho.github.io/</loc>
+   <lastmod>2021-05-29T17:06:42+00:00</lastmod>
+   <changefreq>always</changefreq>
+   <priority>1.0000</priority>
+</url>
+<url>
+   <loc>https://watermincho.github.io/feed.xml</loc>
+   <lastmod>2021-05-29T17:14:06+00:00</lastmod>
+   <changefreq>always</changefreq>
+   <priority>0.8000</priority>
+</url>
+<url>
+   <loc>https://watermincho.github.io/2021/05/30/number-baseball.html</loc>
+   <lastmod>2021-05-29T17:06:42+00:00</lastmod>
+   <changefreq>always</changefreq>
+   <priority>0.8000</priority>
+</url>
+<url>
+   <loc>https://watermincho.github.io/2021/05/29/carculator.html</loc>
+   <lastmod>2021-05-29T17:06:42+00:00</lastmod>
+   <changefreq>always</changefreq>
+   <priority>0.8000</priority>
+</url>
+<url>
+   <loc>https://watermincho.github.io/2021/05/26/wordrelay.html</loc>
+   <lastmod>2021-05-29T17:06:42+00:00</lastmod>
+   <changefreq>always</changefreq>
+   <priority>0.8000</priority>
+</url>
+<url>
+   <loc>https://watermincho.github.io/about.html</loc>
+   <lastmod>2021-05-29T17:06:42+00:00</lastmod>
+   <changefreq>always</changefreq>
+   <priority>0.6400</priority>
+</url>
+<url>
+   <loc>https://watermincho.github.io/posts/</loc>
+   <lastmod>2021-05-29T17:06:42+00:00</lastmod>
+   <changefreq>always</changefreq>
+   <priority>0.6400</priority>
+</url>
+<url>
+   <loc>https://watermincho.github.io/contact.html</loc>
+   <lastmod>2021-05-29T17:06:42+00:00</lastmod>
+   <changefreq>always</changefreq>
+   <priority>0.6400</priority>
+</url>
+</urlset>
