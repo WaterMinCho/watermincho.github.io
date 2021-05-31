@@ -1,0 +1,19 @@
+I"�<h3 id="지금까지-github에-readme로-정리돼있는-내용을-블로그에-옮기면서-복습하는-중이다-매일-순차적으로-올릴-예정이다">지금까지 github에 README로 정리돼있는 내용을 블로그에 옮기면서 복습하는 중이다. 매일 순차적으로 올릴 예정이다.</h3>
+
+<h2 id="끝말잇기"><strong>끝말잇기</strong></h2>
+
+<h3 id="20210423"><code class="language-plaintext highlighter-rouge">2021.04.23</code></h3>
+
+<h4 id="소스코드-word-relayhtml--kungkungddahtml"><span style="color:navy">소스코드: <a href="https://github.com/WaterMinCho/JS/blob/main/word-relay.html" target="\_blank">word-relay.html</a> / <a href="https://github.com/WaterMinCho/JS/blob/main/kungkungdda.html" target="\_blank">kungkungdda.html</a></span></h4>
+
+<hr />
+
+<h3 id="배운-개념"><strong>배운 개념</strong></h3>
+
+<p><code class="language-plaintext highlighter-rouge">addEventListener(이벤트종류,'함수')</code>, <code class="language-plaintext highlighter-rouge">querySelector</code>, <code class="language-plaintext highlighter-rouge">querySelectorAll</code>, <code class="language-plaintext highlighter-rouge">parseInt</code>.</p>
+
+<ul>
+  <li>느낀 점: 천재가 아닌 이상 순서도를 그려보고 절차적이며 논리적으로 생각하는 습관을 기르자.
+고로 난 천재가 아니니 문제 생기면 순서도 그리자.</li>
+</ul>
+:ET

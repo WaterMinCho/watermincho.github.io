@@ -8,9 +8,11 @@ background: "/img/portfolio.png"
 
 ## **숫자야구**
 
-### `2021.04.29` [number-baseball.html](https://github.com/WaterMinCho/JS/blob/main/number-baseball.html){: target="\_blank"}
+### `2021.04.29`
 
-<br><br>
+#### <span style="color:navy">소스코드: [number-baseball.html](https://github.com/WaterMinCho/JS/blob/main/number-baseball.html){: target="\_blank"}</span>
+
+---
 
 ### **플로우**
 
@@ -21,6 +23,8 @@ background: "/img/portfolio.png"
 - 두 번째 플로우(3진 아웃 추가)
 <center><img src="https://user-images.githubusercontent.com/74204327/116470169-02390800-a8ae-11eb-85be-4fb506e2cde9.png" width="65%" height="auto"></center>
   <!-- <p align = "center"> <img src =https://user-images.githubusercontent.com/74204327/116470169-02390800-a8ae-11eb-85be-4fb506e2cde9.png width=500px></p> -->
+
+---
 
 ### **배운 개념**
 

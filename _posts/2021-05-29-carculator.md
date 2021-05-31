@@ -9,9 +9,11 @@ background: "/img/portfolio.png"
 
 ## **계산기**
 
-### `2021.04.28` [calculator.html](https://github.com/WaterMinCho/JS/blob/main/calculator.html){: target="\_blank"}
+### `2021.04.28`
 
-<br><br>
+#### <span style="color:navy">소스코드: [calculator.html](https://github.com/WaterMinCho/JS/blob/main/calculator.html){: target="\_blank"}</span>
+
+---
 
 ### **플로우**
 

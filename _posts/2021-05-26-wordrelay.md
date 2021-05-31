@@ -11,9 +11,11 @@ background: "/img/portfolio.png"
 
 ## **끝말잇기**
 
-### `2021.04.23` [word-relay.html](https://github.com/WaterMinCho/JS/blob/main/word-relay.html){: target="\_blank"} / [kungkungdda.html](https://github.com/WaterMinCho/JS/blob/main/kungkungdda.html){: target="\_blank"}
+### `2021.04.23`
 
-<br><br>
+#### <span style="color:navy">소스코드: [word-relay.html](https://github.com/WaterMinCho/JS/blob/main/word-relay.html){: target="\_blank"} / [kungkungdda.html](https://github.com/WaterMinCho/JS/blob/main/kungkungdda.html){: target="\_blank"}</span>
+
+---
 
 ### **배운 개념**
 
