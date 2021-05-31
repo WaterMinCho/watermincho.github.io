@@ -1,0 +1,391 @@
+I"��<h2 id="로또-추첨기feat비동기"><strong>로또 추첨기(feat.비동기)</strong></h2>
+
+<h3 id="20210430-lottohtml--lotto-selfhtml"><code class="language-plaintext highlighter-rouge">2021.04.30</code> <a href="https://github.com/WaterMinCho/JS/blob/main/lotto.html" target="\_blank">lotto.html</a> / <a href="https://github.com/WaterMinCho/JS/blob/main/lotto-self.html" target="\_blank">lotto-self.html</a></h3>
+
+<p><br /></p>
+
+<h3 id="플로우"><strong>플로우</strong></h3>
+
+<center><img src="https://user-images.githubusercontent.com/74204327/116583260-213ca600-a951-11eb-9e37-6febac5a2ac8.png" width="auto" height="20%" /></center>
+<!-- <p align="center"><img src = https://user-images.githubusercontent.com/74204327/116583260-213ca600-a951-11eb-9e37-6febac5a2ac8.png height = 400px width = 140px></p> -->
+
+<h3 id="배운-개념"><strong>배운 개념</strong></h3>
+
+<ul>
+  <li>
+    <p><strong><em>비동기란</em></strong></p>
+
+    <ul>
+      <li>코딩한 순서와 다르게 동작하는 코드.(ex.EventListener(), setTimeout()…)</li>
+      <li>추가적인 내용은 아래 <code class="language-plaintext highlighter-rouge">var과 let의 차이</code>에 설명이 있다.<br /></li>
+    </ul>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">map, slice</code></p>
+
+    <ul>
+      <li>둘 다 Array하위 메소드이며, 원본은 변하지 않는다.</li>
+      <li>하지만 매칭해보면 원본이랑은 다르다.(복사 개념이기 때문)</li>
+      <li><code class="language-plaintext highlighter-rouge">slice</code>는(자르기 시작할 인덱스, 끝 인덱스) 다만, 끝 인덱스는 자르기 대상에 포함하지 않는다.
+        <ul>
+          <li>인덱스에 -값이 들어가면 뒤에서부터 읽어들인다.</li>
+          <li>splice는 원본이 변한다.(선택하여 꺼낸다.)<br /></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <h3 id="map"><strong>map</strong></h3>
+
+    <ul>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">array.map(callbackFunction(currentValue, index, array),thisArg)</code></p>
+
+        <ul>
+          <li><strong><em><code class="language-plaintext highlighter-rouge">map()</code>함수는 모든 배열의 값이 <code class="language-plaintext highlighter-rouge">Function</code>을 실행하는 메소드다!</em></strong></li>
+          <li><code class="language-plaintext highlighter-rouge">callbackFunction</code>을 실행한 결과를 가지고 새로운 배열을 만들 때 사용한다.</li>
+          <li>
+            <p><code class="language-plaintext highlighter-rouge">callbackFunction, thisArg</code> 총 두개의 매개변수가 있고, <code class="language-plaintext highlighter-rouge">callbackFunction</code>은 <code class="language-plaintext highlighter-rouge">currentValue,index,array</code> 3개의 매개변수를 갖는다.</p>
+
+            <ul>
+              <li><code class="language-plaintext highlighter-rouge">currentValue</code>: 배열 내 현재 값.</li>
+              <li><code class="language-plaintext highlighter-rouge">index</code>: 배열 내 현재 값의 인덱스.</li>
+              <li><code class="language-plaintext highlighter-rouge">array</code>: 현재 배열</li>
+              <li><code class="language-plaintext highlighter-rouge">thisArg</code>: <code class="language-plaintext highlighter-rouge">callbackFunction</code> 내에서 <code class="language-plaintext highlighter-rouge">this</code>로 사용될 값.</li>
+            </ul>
+          </li>
+          <li>
+            <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">days</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">Mon</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Tue</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Wed</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Thus</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Fri</span><span class="dl">"</span><span class="p">];</span>
+</code></pre></div>            </div>
+            <p>위와 같은 변수가 있다고 하자.<br />
+여기서 days.map(…)을 적용한다는 것은 <u>days에 있는 모든 요소에 Function을 실행하고 Function에서 나오는 값을 저장해서 새로운 배열로 만든다</u>는 것이다. (그러므로 원본은 변하지 않는다.)</p>
+          </li>
+        </ul>
+
+        <ol>
+          <li>
+            <p>간단하게 square root (제곱근)을 구해보자</p>
+
+            <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">36</span><span class="p">];</span>
+<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">sqrt</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+
+<span class="nx">result</span><span class="p">[(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)];</span>
+</code></pre></div>            </div>
+          </li>
+          <li>
+            <p>이번에는 기존 배열에 값의 x2를 한 배열을 생성해 보자. <br />
+다음 세 개는 결과가 같다.</p>
+
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```javascript
+const numbers = [ 1,2,3,4,5,6,7,8,9];
+const newNumbers = numbers.map(number =&gt;number *2);
+console.log(newNumbers);
+
+result
+[2, 4, 6, 8, 10, 12, 14, 16, 18]
+
+
+const numbers = [ 1,2,3,4,5,6,7,8,9];
+const newNumbers = numbers.map(function(number){
+  return number*2;  // 이렇게 해도 결과는 위와 같다.
+  });
+console.log(newNumbers);
+
+result
+[2, 4, 6, 8, 10, 12, 14, 16, 18]
+
+const numbers = [ 1,2,3,4,5,6,7,8,9];
+function multiplyTwo(number){
+  return number *2;
+  }
+  const newNumbers = numbers.map(multiplyTwo);
+  console.log(newNumbers); // 이렇게 해도 결과가 같다.
+
+result
+[2, 4, 6, 8, 10, 12, 14, 16, 18]
+```
+위의 결과들은 다 같다. &lt;br&gt;
+numbers에 곱하기 2한 값이 newNumbers에 똑같이 나타난다.&lt;br&gt;
+map 함수는 기존의 배열을 callbackFunction에 의해 새 배열을 만드는 함수이다.
+그러니 기존의 배열이 변하지는 않는다.&lt;br&gt;
+</code></pre></div>            </div>
+          </li>
+          <li>
+            <p><code class="language-plaintext highlighter-rouge">map</code> 함수는 filter함수와 같이 <u>Object(객체)타입</u>도 컨트롤 할 수도 있다.</p>
+
+            <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">students</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">james</span><span class="dl">"</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">tim</span><span class="dl">"</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">john</span><span class="dl">"</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">brian</span><span class="dl">"</span> <span class="p">},</span>
+<span class="p">];</span>
+</code></pre></div>            </div>
+
+            <p>이러한 Object(객체)타입의 변수가 있다.<br />
+여기서 이름만 추출하고 싶으면 <u>Array map</u>을 이용해서 쉽게 추출할 수 있다.</p>
+
+            <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">students</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">james</span><span class="dl">"</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">tim</span><span class="dl">"</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">john</span><span class="dl">"</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">brian</span><span class="dl">"</span> <span class="p">},</span>
+<span class="p">];</span>
+<span class="kd">const</span> <span class="nx">names</span> <span class="o">=</span> <span class="nx">students</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">student</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">student</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">names</span><span class="p">);</span>
+
+<span class="nx">result</span><span class="p">[(</span><span class="dl">"</span><span class="s2">james</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">tim</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">john</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">brian</span><span class="dl">"</span><span class="p">)];</span>
+</code></pre></div>            </div>
+
+            <p>result를 보면 이름만 추출된 것을 볼 수 있다.<br />
+여기서 student.name을 student.id로 바꾸면 id 값만 추출된다.</p>
+
+            <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">students</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">james</span><span class="dl">"</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">tim</span><span class="dl">"</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">john</span><span class="dl">"</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">brian</span><span class="dl">"</span> <span class="p">},</span>
+<span class="p">];</span>
+<span class="kd">var</span> <span class="nx">names</span> <span class="o">=</span> <span class="nx">students</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">student</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">student</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">names</span><span class="p">);</span>
+
+<span class="nx">result</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)];</span>
+</code></pre></div>            </div>
+
+            <p>결과를 보면 id 값만 추출된 것을 볼 수 있다.</p>
+          </li>
+          <li>
+            <p>또다른 Object(객체)를 보자.</p>
+
+            <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">testJson</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span><span class="na">name</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">이건</span><span class="dl">"</span><span class="p">,</span> <span class="na">salary</span> <span class="p">:</span> <span class="mi">50000000</span><span class="p">},</span>
+  <span class="p">{</span><span class="na">name</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">홍길동</span><span class="dl">"</span><span class="p">,</span> <span class="na">salary</span> <span class="p">:</span> <span class="mi">1000000</span><span class="p">},</span>
+  <span class="p">{</span><span class="na">name</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">임신구</span><span class="dl">"</span><span class="p">,</span> <span class="na">salary</span> <span class="p">:</span> <span class="mi">3000000</span><span class="p">},</span>
+  <span class="p">{</span><span class="na">name</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">이승룡</span><span class="dl">"</span><span class="p">,</span> <span class="na">salary</span> <span class="p">:</span> <span class="mi">2000000</span><span class="p">}</span>
+  <span class="p">];</span>
+  <span class="kd">const</span> <span class="nx">newJson</span> <span class="o">=</span> <span class="nx">testJson</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">index</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">returnObj</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="nx">returnObj</span><span class="p">[</span><span class="nx">element</span><span class="p">.</span><span class="nx">name</span><span class="p">]</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">salary</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">returnObj</span><span class="p">;</span>
+    <span class="p">});</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">newObj</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">newJson</span><span class="p">);</span>
+
+
+    <span class="nx">result</span>
+    <span class="mi">1</span><span class="p">.</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+    <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">이건</span><span class="dl">'</span><span class="p">,</span> <span class="na">salary</span><span class="p">:</span> <span class="mi">50000000</span> <span class="p">}</span>
+    <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">홍길동</span><span class="dl">'</span><span class="p">,</span> <span class="na">salary</span><span class="p">:</span> <span class="mi">1000000</span> <span class="p">}</span>
+    <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">임신구</span><span class="dl">'</span><span class="p">,</span> <span class="na">salary</span><span class="p">:</span> <span class="mi">3000000</span> <span class="p">}</span>
+    <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">이승룡</span><span class="dl">'</span><span class="p">,</span> <span class="na">salary</span><span class="p">:</span> <span class="mi">2000000</span> <span class="p">}</span>
+    <span class="mi">2</span><span class="p">.</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">newJson</span><span class="p">);</span>
+    <span class="p">[{</span> <span class="dl">'</span><span class="s1">이건</span><span class="dl">'</span><span class="p">:</span> <span class="mi">50000000</span> <span class="p">},{</span> <span class="dl">'</span><span class="s1">홍길동</span><span class="dl">'</span><span class="p">:</span> <span class="mi">1000000</span> <span class="p">},{</span> <span class="dl">'</span><span class="s1">임신구</span><span class="dl">'</span><span class="p">:</span> <span class="mi">3000000</span> <span class="p">},{</span> <span class="dl">'</span><span class="s1">이승룡</span><span class="dl">'</span><span class="p">:</span> <span class="mi">2000000</span> <span class="p">}]</span>
+</code></pre></div>            </div>
+          </li>
+          <li>
+            <p>이번에는 Array를 reverse. <br />
+배열 값에 곱하기 2한 값들을 reverse한다.</p>
+
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```javascript
+const numbers = [1,2,3,4,5,6];
+const numbersReverse  = numbers.map(number =&gt; number *2).reverse();
+console.log(numbersReverse);
+
+result
+[ 12, 10, 8, 6, 4, 2 ]
+```
+</code></pre></div>            </div>
+          </li>
+          <li>
+            <p><code class="language-plaintext highlighter-rouge">Array</code>안에 <code class="language-plaintext highlighter-rouge">Array</code>가 있는 경우</p>
+
+            <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+  <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+  <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+<span class="p">];</span> <span class="c1">//array안에 array가 있는 경우</span>
+<span class="kd">const</span> <span class="nx">newNumbers</span> <span class="o">=</span> <span class="nx">numbers</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">array</span><span class="p">)</span> <span class="o">=&gt;</span>
+  <span class="nx">array</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">number</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">newNumbers</span><span class="p">);</span>
+
+<span class="nx">result</span><span class="p">[([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">18</span><span class="p">])];</span>
+</code></pre></div>            </div>
+          </li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li>피셔-예이츠 셔플 알고리즘
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span> <span class="p">(</span><span class="nx">candidate</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">//무작위 인덱스 뽑기.</span>
+  <span class="kd">const</span> <span class="nx">random</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="nx">candidate</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+  <span class="c1">//무작위 인덱스로 뽑은 값은 spliceArray배열에 들어있다.</span>
+  <span class="kd">const</span> <span class="nx">spliceArray</span> <span class="o">=</span> <span class="nx">candidate</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">random</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="c1">//배열에 들어있는 값을 꺼낸다.</span>
+  <span class="kd">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">spliceArray</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="c1">//shuffle배열에 삽입.</span>
+  <span class="nx">shuffled</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <p>숫자를 무작위로 섞는 방법이다. 먼저 무작위 인덱스를 하나 선택한 후, 그에 해당하는 요소를 새로운 배열로 옮긴다. 이를 반복하다 보면 새 배열에 무작위로 섞인 숫자들이 들어간다.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">sort()</code><br /></p>
+
+    <ul>
+      <li>sort의 (a,b)가 있으며 원본을 바꾼다.<br />
+<code>array.sort(function(a,b){a-b};); --&gt; array.sort((a,b)=&gt;{a-b};)</code><br />
+로 하면 결과값이 오름차순<code>[1,2,3,4,5,6,7,8,9]</code>가 나온다.<br />
+반대로array.sort((a,b)=&gt;{b-a};)&lt;/code&gt;로 하면<br />
+내림차순<code>[9,8,7,6,5,4,3,2,1]</code>이 나온다.</li>
+      <li>만약 원본을 바꾸는 메서드가 있는 경우 대처법은 <code>array.slice().sort((a,b)=&gt;{a-b})</code><br />
+식으로 <strong>slice()를 중간에 적용</strong>시키면 원본은 그대로 냅두고 복사형식으로 처리할 수 있다.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">setTimeout()</code></strong></p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">//실행문</span>
+<span class="p">},</span> <span class="nx">millisecond</span><span class="p">);</span>
+</code></pre></div>    </div>
+
+    <ul>
+      <li><u>타이머의 시간은 정확한가?</u>
+        <ul>
+          <li>정확하지 않다. 자바스크립트는 기본적으로 한 번에 한 가지 일만 할 수 있다. 따라서 이미 많은 일을 하고 있다면 설정한 시간이 되어도 <code class="language-plaintext highlighter-rouge">setTimeout</code>에 지정된 작업이 수행되지 않는다. 기존에 하고 있던 일이 끝나야 <code class="language-plaintext highlighter-rouge">setTimeout</code>에 지정한 작업이 실행된다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <h2 id="var와-let의-차이feat클로저"><strong><code class="language-plaintext highlighter-rouge">var와 let의 차이</code></strong>(feat.클로저)</h2>
+
+    <p><del>내가 면접 때 오지게 절었던 부분 중 하나</del></p>
+
+    <ul>
+      <li>
+        <p>실습파일(lotto.html)의 for문에서 <code class="language-plaintext highlighter-rouge">let i = 0 을 var i = 0</code>으로 바꾸면 <code class="language-plaintext highlighter-rouge">undefined 6</code>이 나온다.즉, 모든 i가 6으로 나온다는 것이다.</p>
+      </li>
+      <li>
+        <h3 id="변수"><strong><code class="language-plaintext highlighter-rouge">변수</code></strong></h3>
+
+        <ul>
+          <li>변수는 <code class="language-plaintext highlighter-rouge">스코프</code>라는 것을 가진다. <code class="language-plaintext highlighter-rouge">var</code>는 함수 스코프를 가지고 <code class="language-plaintext highlighter-rouge">let</code>은 블록 스코프를 가진다.</li>
+          <li>
+            <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">b</span><span class="p">(){</span>
+  <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+
+<span class="nx">result</span>
+<span class="nx">Uncaught</span> <span class="nx">ReferenceError</span><span class="p">:</span> <span class="nx">a</span> <span class="nx">is</span> <span class="nx">not</span> <span class="nx">defined</span>
+</code></pre></div>            </div>
+
+            <ul>
+              <li>위와 같이 함수b 내부에 <code class="language-plaintext highlighter-rouge">var a</code>를 정의한 후 함수 바깥에서 변수 a를 호출했더니 에러가 발생했다. 이유인 즉슨 var는 함수 내에서만 동작하는 지역변수이기 때문이다.</li>
+              <li><code class="language-plaintext highlighter-rouge">이와 같이 함수를 경계로 접근 여부가 달라지는 것</code>을 <strong>함수 스코프</strong>라고 한다.</li>
+            </ul>
+          </li>
+          <li>
+            <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+
+<span class="nx">result</span><span class="p">;</span>
+<span class="mi">1</span><span class="p">;</span>
+</code></pre></div>            </div>
+          </li>
+          <li>
+            <p>함수 범위에 없고 조건문 내에 있기 때문에 a값이 그대로 출력되는 것을 볼 수 있다.
+즉, 함수만 신경쓴다는 것인데 <code class="language-plaintext highlighter-rouge">let</code>은 조금 다르다.</p>
+          </li>
+          <li>
+            <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span><span class="p">(</span><span class="kc">true</span><span class="p">){</span>
+  <span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+
+<span class="nx">result</span>
+<span class="nx">Uncaught</span> <span class="nx">ReferenceError</span><span class="p">:</span> <span class="nx">a</span> <span class="nx">is</span> <span class="nx">not</span> <span class="nx">defined</span>
+</code></pre></div>            </div>
+
+            <ul>
+              <li><del>이것봐라?</del> 잘 보면 {}(블록)범위 내에서만 살아숨쉬는 앙증맞은 let이라는 것을 확인할 수 있었다.</li>
+              <li>그럼 <code class="language-plaintext highlighter-rouge">if, switch, for, while(?얘는 case by case)</code> 등의 함수가 아닌 <code class="language-plaintext highlighter-rouge">블록 내부</code>에서만 접근이 허용된다는 것을 유추할 수 있다.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h3 id="이제-실습파일lottohtml을-보자">이제, 실습파일(<code class="language-plaintext highlighter-rouge">lotto.html</code>)을 보자</h3>
+
+        <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">winBalls</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">winBalls</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">i</span><span class="p">);</span>
+    <span class="nx">drawBall</span><span class="p">(</span><span class="nx">winBalls</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">$result</span><span class="p">);</span>
+  <span class="p">},</span> <span class="p">(</span><span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>        </div>
+
+        <p>위의 코드 중</p>
+
+        <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">winBalls</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">i</span><span class="p">);</span>
+  <span class="nx">drawBall</span><span class="p">(</span><span class="nx">winBalls</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">$result</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>        </div>
+
+        <p>이 부분은 <code class="language-plaintext highlighter-rouge">실제 코드와 다른 시점에 실행</code>된다. 위 코드가 실행이 될 때는 i값은 이미 6이 되어있다. <br /> 즉 <br /> <code class="language-plaintext highlighter-rouge">for루프를 모두 돌고 i값이 6이 된다</code> <br /> -&gt; <code class="language-plaintext highlighter-rouge">1초가 된다</code> <br /> -&gt; <code class="language-plaintext highlighter-rouge">winBalls[6]이 나온다</code> <br /> -&gt;<code class="language-plaintext highlighter-rouge"> winBalls[6]은 winBalls배열의 범위(5)를 넘었기에 undefined로 나온다</code> <br /> -&gt; <code class="language-plaintext highlighter-rouge">log값이 'undefined 6'으로 출력된다</code> 라는 일련의 과정으로 이해할 수 있다`.<br /> <del>나중에 커서 보고 이해 못하는 나 또는 다른 분들에겐 친절하게 루프로 보여주겠다.</del></p>
+
+        <p><code class="language-plaintext highlighter-rouge">i가 6이 됨</code><br />
+<code class="language-plaintext highlighter-rouge">1초 후 콜백 0실행(i=6)</code><br />
+<code class="language-plaintext highlighter-rouge">2초 후 콜백 0실행(i=6)</code><br />
+<code class="language-plaintext highlighter-rouge">3초 후 콜백 0실행(i=6)</code><br />
+<code class="language-plaintext highlighter-rouge">4초 후 콜백 0실행(i=6)</code><br />
+<code class="language-plaintext highlighter-rouge">5초 후 콜백 0실행(i=6)</code><br />
+<code class="language-plaintext highlighter-rouge">6초 후 콜백 0실행(i=6)</code><br /></p>
+
+        <p><br /></p>
+      </li>
+      <li><strong>그렇다면 왜 <code class="language-plaintext highlighter-rouge">let</code>을 쓸 때는 이러한 문제가 발생하지 았았는가?</strong><br />
+아래를 보자.</li>
+    </ul>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">winBalls</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">winBalls</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">i</span><span class="p">);</span>
+    <span class="nx">drawBall</span><span class="p">(</span><span class="nx">winBalls</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">$result</span><span class="p">);</span>
+  <span class="p">},</span> <span class="p">(</span><span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p><code class="language-plaintext highlighter-rouge">for</code>문에서 쓰이는 <code class="language-plaintext highlighter-rouge">let</code>은 하나의 블록마다 <code class="language-plaintext highlighter-rouge">i</code>가 고정된다. 이것도 블록 스코프의 특성이라고 보면 된다. <br /> 따라서 <code class="language-plaintext highlighter-rouge">setTimeout</code> 콜백 함수 내부의 <code class="language-plaintext highlighter-rouge">i</code>도 <code class="language-plaintext highlighter-rouge">setTimeout</code>을 호출할 떄의 <code class="language-plaintext highlighter-rouge">i</code>와 같은 값이 들어간다.<br /><br /></p>
+
+    <h2 id="아니-그럼-var쓰던-사람들은-저렇게-코드를-짤-수-없는겁니까"><strong>“아니 그럼 var쓰던 사람들은 저렇게 코드를 짤 수 없는겁니까?”</strong></h2>
+
+    <p>그래서 나온게(?) <code class="language-plaintext highlighter-rouge">클로저</code>다. 아래를 보자.</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">winBalls</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">//함수를 소괄호로 감싼다 = 그 자리에서 바로 호출한다.</span>
+  <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">j</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//j는 매개변수이고 함수블록 안에 갇혀있다.</span>
+    <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">winBalls</span><span class="p">[</span><span class="nx">j</span><span class="p">],</span> <span class="nx">j</span><span class="p">);</span> <span class="c1">// 함수의 인자j는 for문의 var i를 가리킨다.</span>
+      <span class="nx">drawBall</span><span class="p">(</span><span class="nx">winBalls</span><span class="p">[</span><span class="nx">j</span><span class="p">],</span> <span class="nx">$result</span><span class="p">);</span>
+    <span class="p">},</span> <span class="p">(</span><span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">);</span>
+  <span class="p">})(</span><span class="nx">i</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p>클로저는 <code class="language-plaintext highlighter-rouge">함수와 함수 바깥에 있는 변수와의 관계</code>다.<br /> 함수 바깥에 있는 변수를 함수 안에 있는 변수로 바꿔주고 내부 함수의 변수로써 사용하도록 <del>억지</del> 세팅해준거다 <del>그냥 <code class="language-plaintext highlighter-rouge">let</code>쓰자…</del> <br /><br /></p>
+
+    <p>그래도 <del>난 개발지식이 태아수준이라</del> 현상 자체는 알아야 한다.<br />
+함수랑 함수 자체를 바깥에 있는 변수들을 통틀어 <code class="language-plaintext highlighter-rouge">클로저</code>라 칭하고 그 <code class="language-plaintext highlighter-rouge">클로저</code>와 <code class="language-plaintext highlighter-rouge">variable</code>이 만나면 위의 문제가 발생할 수 있다. 근데 모든 케이스가 그렇지 않고 조건이 껴있다. 바로 <code class="language-plaintext highlighter-rouge">비동기</code>다. <br />
+즉 <strong><code class="language-plaintext highlighter-rouge">함수 스코프를 지닌 variable</code> 과 <code class="language-plaintext highlighter-rouge">비동기함수</code>가 만나면 <code class="language-plaintext highlighter-rouge">클로저</code>문제가 발생한다.</strong> 그렇다고 무조건 <code class="language-plaintext highlighter-rouge">let</code>을 쓰는것은 좋지 않다 왜냐하면 레거시에서 <code class="language-plaintext highlighter-rouge">var</code>을 쓰는 경우가 있기 때문에 해당 현상에 대해선 설명할 수 있어야 한다. <br /></p>
+  </li>
+</ul>
+:ET
