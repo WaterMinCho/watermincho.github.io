@@ -4,7 +4,30 @@
     name="viewport"
     content="width=device-width, initial-scale=1, shrink-to-fit=no"
   />
+  <meta name="msapplication-TileColor" content="#ffffff" />
+  <meta
+    name="msapplication-TileImage"
+    content="{{site.baseurl}}/assets/logo.ico/ms-icon-144x144.png"
+  />
+  <meta name="theme-color" content="#ffffff" />
+  <meta
+    name="description"
+    content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}"
+  />
 
+  <!-- 구글 태그 -->
+  <meta
+    name="google-site-verification"
+    content="Pj_jykdNQ0czZC4ZL5i2yt6UFMJYQ5dnRginu7UvEtA"
+  />
+  <!-- 네이버 태그 -->
+  <!-- <meta
+    name="naver-site-verification"
+    content="f42f5a1002568d0c12767062c94b6e7512335d29"
+  /> -->
+  <meta property="og:image" content="./img/portfolio.jpg" />
+  <meta property="og:title" content="WaterMinCho's Velog" />
+  <meta property="og:description" content="물민초의 개발블로그입니다." />
   <link
     rel="apple-touch-icon"
     sizes="57x57"
@@ -75,23 +98,7 @@
     href="{{site.baseurl}}/assets/logo.ico/favicon-16x16.png"
   />
   <link rel="manifest" href="{{site.baseurl}}/assets/logo.ico/manifest.json" />
-  <meta name="msapplication-TileColor" content="#ffffff" />
-  <meta
-    name="msapplication-TileImage"
-    content="{{site.baseurl}}/assets/logo.ico/ms-icon-144x144.png"
-  />
-  <meta name="theme-color" content="#ffffff" />
 
-  <!-- 구글 태그 -->
-  <meta
-    name="google-site-verification"
-    content="Pj_jykdNQ0czZC4ZL5i2yt6UFMJYQ5dnRginu7UvEtA"
-  />
-  <!-- 네이버 태그 -->
-  <!-- <meta
-    name="naver-site-verification"
-    content="f42f5a1002568d0c12767062c94b6e7512335d29"
-  /> -->
   <!-- 하이라이트 -->
   <link rel="stylesheet" href="/assets/css/syntax.css" />
 
@@ -99,16 +106,6 @@
   <link
     rel="stylesheet"
     href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css"
-  />
-
-  <title>
-    {% if page.title %}{{ page.title | escape }} - {{ site.title | escape }} {%
-    else %}{{ site.title | escape }}{% endif %}
-  </title>
-
-  <meta
-    name="description"
-    content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}"
   />
 
   <link
@@ -121,6 +118,10 @@
     rel="stylesheet"
     type="text/css"
   />
+  <title>
+    {% if page.title %}{{ page.title | escape }} - {{ site.title | escape }} {%
+    else %}{{ site.title | escape }}{% endif %}
+  </title>
 
   <script
     src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
