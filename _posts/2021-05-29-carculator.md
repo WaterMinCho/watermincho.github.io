@@ -84,7 +84,7 @@ background: "/img/portfolio.png"
 
 ---
 
-- ### **중첩 반복문 해결하는 법**
+- ### **중첩 조건문 해결하는 법**
 
   ```javascript
   function test() {
