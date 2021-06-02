@@ -41,14 +41,14 @@ layout: default
             <h3 class="post-subtitle">{{ post.excerpt | strip_html | truncatewords: 15 }}</h3>
             {% endif %}
           </a>
-          <p class="post-meta">Posted by
-            {% if post.author %}
+          <p class="post-meta">게시일:
+            <!-- {% if post.author %}
             {{ post.author }}
             {% else %}
             {{ site.author }}
             {% endif %}
-            on
-            {{ post.date | date: '%B %d, %Y' }} &middot; {% include read_time.html content=post.content %}            
+            on -->
+            {{ post.date | date: '%b %d, %Y' }} &middot; {% include read_time.html content=post.content %}            
           </p>
         </article>
 

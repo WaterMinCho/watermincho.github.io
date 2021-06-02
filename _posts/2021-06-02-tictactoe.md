@@ -2,7 +2,7 @@
 layout: post
 title: "틱택토(+ 컴퓨터전)"
 subtitle: "자바스크립트 실습 7일차.<br>"
-date: 2021.06.02 15:00:00
+date: 2021.06.02 15:00:00F
 background: "/img/portfolio.png"
 ---
 
