@@ -28,7 +28,17 @@ background: "/img/portfolio.png"
 
 ### **배운 개념**
 
-- event.preventDefault(); //기본 동작 막기(메소드이며 form태그의 기본동작인 깜빡거림을 막을 수 있다.)
+<span style="color:red">1. [event.preventDefault()](#eventpreventdefault)</span><br>
+<span style="color:red">2. [Math.random()](#mathrandom)</span><br>
+<span style="color:red">3. [indexOf, includes](#indexof와-includes)</span><br>
+<span style="color:red">4. [Set()](#new-setinputsize4)</span><br>
+<span style="color:red">5. [join()](#join)</span><br>
+<span style="color:red">6. [append()](#append)</span><br>
+
+---
+
+- #### event.preventDefault();
+  기본 동작 막기(메소드이며 form태그의 기본동작인 깜빡거림을 막을 수 있다.)
 
 ---
 
@@ -37,19 +47,19 @@ background: "/img/portfolio.png"
 
 ---
 
-- ```javascript
-  for (let n = 0; n < 4; n++) {
-    const index = Math.floor(Math.random() * (numbers.length - n));
-    answer.push(numbers[index]);
-    numbers.splice(index, 1);
-  }
-  ```
-
+- #### Math.random();
+  - ```javascript
+    for (let n = 0; n < 4; n++) {
+      const index = Math.floor(Math.random() * (numbers.length - n));
+      answer.push(numbers[index]);
+      numbers.splice(index, 1);
+    }
+    ```
   - 무작위로 숫자를 뽑을 때는 `Math.random`메서드를 사용한다. 단, 뽑은 값은 정수가 아니므로 정수가 필요할 때는 `Math.floor`나 `Math.ceil`같은 메서드를 사용해 정수로 바꿔야 한다.
 
 ---
 
-- **indexOf와 includes**
+- #### **indexOf와 includes**
 
   ```javascript
   "2345".indexOf(3) === 1;
@@ -73,7 +83,7 @@ background: "/img/portfolio.png"
   }
   ```
 
-  - **new Set(input).size !== 4**
+  - #### **new Set(input).size!==4**
     - **Set은 중복을 허용하지 않는 특수한 배열**이다.
     - `new Set('1231')`을 하면 `Set` 내부에는 1,2,3만 들어간다. 그러므로 위의 코드에 중복이 없다면 4가 나오지만 중복이 있다면 4보다 작은 값이 나올 것이다.
     - Set의 길이를 구할 때는 `.length`가 아닌 `.size`로 배열의 길이를 잰다.
@@ -88,7 +98,7 @@ background: "/img/portfolio.png"
   }
   ```
 
-  - `.join()`
+  - #### `join()`
     - 배열을 문자열로 바꾸는 메소드.
     - ('')하면 [3,1,4,5]라는 배열이 '3145'라는 문자열로 바뀜. 안하면 '3,1,4,5'로 불러옴.<기본 값 = (',')>
 
@@ -105,7 +115,7 @@ background: "/img/portfolio.png"
   ```
 
   - `tries.length>=`를 한 이유: `tries=[]`에 9개가 차 있다면, 10번째 시도 내에서 성공하면 홈런이고 9개가 이미 차있는 상태에서 10번째 시도했을 때 결국 성공하지 못했다면 패배로 출력하도록 하기 위함이다.
-  - `.append()`
+  - #### `append()`
     - `append`메서드는 새로 만들고 싶은 값을 바로 옆에 추가한다.
     - `createElement`를 통해 각각의 `텍스트`와 `html`요소를 지정하여 추가가 가능하다.
     - `appendChild()`는 `createTextNode`를 사용하고 변수에 저장 후에 변수를 인자로 넣어야한다. --> `append`는 `appendChild`를 보완해서 만든거다.<br>

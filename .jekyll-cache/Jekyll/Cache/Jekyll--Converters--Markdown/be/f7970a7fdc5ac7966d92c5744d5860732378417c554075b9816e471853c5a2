@@ -1,0 +1,208 @@
+I"YK<h2 id="가위바위보"><strong>가위바위보</strong></h2>
+
+<h3 id="20210430"><code class="language-plaintext highlighter-rouge">2021.04.30</code></h3>
+
+<h4 id="소스코드-rsphtml"><span style="color:navy">소스코드: <a href="https://github.com/WaterMinCho/JS/blob/main/rsp.html" target="\_blank"><strong><code class="language-plaintext highlighter-rouge">rsp.html</code></strong></a></span></h4>
+
+<hr />
+
+<h3 id="플로우"><strong>플로우</strong></h3>
+
+<ul>
+  <li>
+    <center><img src="https://user-images.githubusercontent.com/74204327/116676173-9f488d80-a9e1-11eb-846d-c43c20ec34f6.png" width="60%" height="auto%" /></center>
+    <!-- <p align="center"><img src = https://user-images.githubusercontent.com/74204327/116676173-9f488d80-a9e1-11eb-846d-c43c20ec34f6.png height = 300px width = 180px></p> -->
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="배운-개념"><strong>배운 개념</strong></h3>
+
+<p><span style="color:red">1. <a href="#stylebackground">style.background</a></span><br />
+<span style="color:red">2. <a href="#setinterval함수반복간격ms">setInterval()</a></span><br />
+<span style="color:red">3. <a href="#버그">버그 해결</a></span><br />
+ - <a href="#가정">가정</a><br />
+ - <a href="#해결-방법">해결 방법</a><br />
+<span style="color:red">1. <a href="#eventpreventdefault">event.preventDefault()</a></span><br />
+<span style="color:red">1. <a href="#eventpreventdefault">event.preventDefault()</a></span><br /></p>
+
+<ol>
+  <li><a href="#stylebackground">style.background</a><br /></li>
+  <li><a href="#setinterval함수반복간격ms">setInterval()</a><br /></li>
+  <li><a href="#버그">버그 해결</a><br />
+    <ul>
+      <li><a href="#가정">가정</a><br /></li>
+      <li><a href="#해결-방법">해결 방법</a><br /></li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<ul>
+  <li>
+    <h4 id="stylebackground">style.background</h4>
+
+    <ul>
+      <li>
+        <p><code>$computer.style.background = `url(${IMG_URL}) 0 0`;</code><br /> 스타일의 <code class="language-plaintext highlighter-rouge">background</code>는 <code class="language-plaintext highlighter-rouge">이미지 X좌표 Y좌표값</code>을 입력할 수 있다.</p>
+      </li>
+      <li>
+        <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">rspX</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">scissors</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">rock</span><span class="p">:</span> <span class="dl">"</span><span class="s2">- 230px</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">paper</span><span class="p">:</span> <span class="dl">"</span><span class="s2">-440px</span><span class="dl">"</span><span class="p">,</span>
+<span class="p">};</span>
+</code></pre></div>        </div>
+
+        <p>위와 같이 공통된 속성을 지닌 변수의 모임은 객체로 묶어주는 것이 현명하다.</p>
+      </li>
+      <li>
+        <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$computer</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">background</span> <span class="o">=</span> <span class="s2">`url(</span><span class="p">${</span><span class="nx">IMG_URL</span><span class="p">}</span><span class="s2">) </span><span class="p">${</span><span class="nx">rspX</span><span class="p">[</span><span class="nx">computerChoice</span><span class="p">]}</span><span class="s2"> 0`</span><span class="p">;</span>
+<span class="nx">$computer</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">backgroundSize</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">auto 200px</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div>        </div>
+
+        <ul>
+          <li>
+            <p><code class="language-plaintext highlighter-rouge">rspX.computerChoice</code>하면 안된다. 왜냐하면 rspX객체엔 <code class="language-plaintext highlighter-rouge">computerChoice</code>라는 문자열 속성이 없기 때문에 <code class="language-plaintext highlighter-rouge">rspX[computerChoice]</code>로 선택해야 한다.</p>
+          </li>
+          <li>
+            <p><code class="language-plaintext highlighter-rouge">background</code>를 수정할 때마다 <code class="language-plaintext highlighter-rouge">size도 초기화</code>되기 때문에 <code class="language-plaintext highlighter-rouge">항상 background와 backgroundSize는 붙어있어야 한다.</code></p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<ul>
+  <li>
+    <h4 id="setinterval함수반복간격ms">setInterval(함수,반복간격(ms));</h4>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">setInterval</code>함수는 <code class="language-plaintext highlighter-rouge">return</code>값이 존재한다. 그 값은 타이머에 대한 <code class="language-plaintext highlighter-rouge">아이디(숫자)</code>로 해당 값을 사용하여 타이머를 제거할 수 있다.</li>
+      <li><code class="language-plaintext highlighter-rouge">setInterval을 취소</code>할 수 있는 방법으로 <code class="language-plaintext highlighter-rouge">clearInterval</code>을 제공한다. <br /><code class="language-plaintext highlighter-rouge">let ID= setInterval(함수,ms)</code></li>
+      <li><code class="language-plaintext highlighter-rouge">setTimeout</code>함수도<code class="language-plaintext highlighter-rouge"> clearTimeout</code>으로 제거할 수 있지만 <code class="language-plaintext highlighter-rouge">setTimeout</code>함수 내의 인수로 넣은 함수가 실행되기 전에 <code class="language-plaintext highlighter-rouge">clearTimeout</code>을 호출해야 한다.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<ul>
+  <li>
+    <h4 id="버그"><strong>버그</strong></h4>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">clickButton</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">//버튼을 눌렀을 때</span>
+  <span class="nx">clearInterval</span><span class="p">(</span><span class="nx">intervalId</span><span class="p">);</span> <span class="c1">// 타이머 멈춤.</span>
+  <span class="c1">//점수 계산 및 화면 표시</span>
+  <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">intervalId</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="nx">changeComputerHand</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span> <span class="c1">//타이머를 만들 때마다 변수에 저장한 후에 clearInterval해야 한다.</span>
+  <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span> <span class="c1">//1초 뒤에 다시 setInterval.</span>
+<span class="p">};</span>
+
+<span class="nx">$rock</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="nx">clickButton</span><span class="p">);</span>
+<span class="nx">$scissors</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="nx">clickButton</span><span class="p">);</span>
+<span class="nx">$paper</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="nx">clickButton</span><span class="p">);</span>
+</code></pre></div>    </div>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">setTimeout</code>설정값 1초 내에 여러 번 클릭하면 그림이 빠르게 돌아간다. 그 후에 버튼을 클릭하면 그림이 멈추지 않는다.<br />
+버튼을 클릭할 떄마다 각각 <code class="language-plaintext highlighter-rouge">setTimeout</code>타이머가 여러 개 실행되기 떄문이다.</li>
+      <li>
+        <p>버튼클릭을 하면 <code class="language-plaintext highlighter-rouge">clearInterval</code>을 수행하므로 문제없다고 생각할 수도 있다.<br />
+하지만 버튼은 <code class="language-plaintext highlighter-rouge">setInterval</code>을 멈추는 <code class="language-plaintext highlighter-rouge">clearInterval</code>을 수행할 뿐 <code class="language-plaintext highlighter-rouge">setTimeout</code>을 멈추는 <code class="language-plaintext highlighter-rouge">clearTimeout</code>을 수행하지는 않아서 <code class="language-plaintext highlighter-rouge">버튼을 누른 횟수만큼 setTimeout타이머가 실행되고 각각1초 뒤에 setInterval을 하게 되어 그림이 빠르게 돌아가는거다.</code></p>
+      </li>
+      <li>
+        <h5 id="가정"><strong>가정</strong></h5>
+
+        <ol>
+          <li><code class="language-plaintext highlighter-rouge">clickButton</code>을 1초 내에 10번을 눌렀다.</li>
+          <li><code class="language-plaintext highlighter-rouge">interval</code>의 ID인덱스로 따지면 10개가 생기지만 덮어씌우는 방식이기 때문에 마지막 인덱스를 <code class="language-plaintext highlighter-rouge">intervalID변수</code>에 넣고 있다.</li>
+          <li>1초 뒤에 버튼을 클릭하면 마지막 인덱스만 클리어된다.<br /><br /></li>
+        </ol>
+      </li>
+      <li>
+        <h5 id="해결-방법"><strong>해결 방법</strong></h5>
+
+        <ol>
+          <li>
+            <p><code class="language-plaintext highlighter-rouge">clearInterval함수 한번 더 사용.</code>(추천)
+<code class="language-plaintext highlighter-rouge">clickButton</code>이 실행되는 최초에 한번 클리어하고<br />
+1초 뒤 실행되는 <code class="language-plaintext highlighter-rouge">setTimeout</code>에 한번 더 클리어를 하면<br />
+1초루프동안마다 클리어가 반복되므로 해결됨.</p>
+
+            <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">clickButton</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">clearInterval</span><span class="p">(</span><span class="nx">intervalId</span><span class="p">);</span>
+
+  <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">clearInterval</span><span class="p">(</span><span class="nx">intervalId</span><span class="p">);</span> <span class="c1">//추가.</span>
+    <span class="nx">intervalId</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="nx">changeComputerHand</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span>
+  <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="p">};</span>
+<span class="nx">$rock</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="nx">clickButton</span><span class="p">);</span>
+<span class="nx">$scissors</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="nx">clickButton</span><span class="p">);</span>
+<span class="nx">$paper</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="nx">clickButton</span><span class="p">);</span>
+</code></pre></div>            </div>
+          </li>
+          <li>
+            <p><code class="language-plaintext highlighter-rouge">removeEventListener메서드 사용(비추천: 실수하기 쉬움)</code><br />
+이유: <code>func() !== func()</code>라는<u>(객체 참조관계)</u> 개념을 사용하여 <code class="language-plaintext highlighter-rouge">addEventListener</code>와 <code class="language-plaintext highlighter-rouge">removeEventListener</code>내의 해결 법: 함수가 같아야 제거가 되는데 같지 않기 때문에 제거가 안되는 점을 놓치기 때문.<br />
+<code>func() === func()</code>값이 <code class="language-plaintext highlighter-rouge">false</code>를 반환하기 때문에 객체(함수)를 번수에 넣으면 비교할 수 있다.<br />
+참고) <em>참조관계를 유지하고 싶으면 변수에 넣으면 된다!</em></p>
+
+            <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">clickButton</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">$rock</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="nx">clickButton</span><span class="p">);</span> <span class="c1">//추가.</span>
+  <span class="nx">$scissors</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="nx">clickButton</span><span class="p">);</span> <span class="c1">//추가.</span>
+  <span class="nx">$paper</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="nx">clickButton</span><span class="p">);</span> <span class="c1">//추가.</span>
+  <span class="c1">//clickButton이 실행되는 최초에 한번 제거</span>
+
+  <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">$rock</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="nx">clickButton</span><span class="p">);</span> <span class="c1">//추가.</span>
+    <span class="nx">$scissors</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="nx">clickButton</span><span class="p">);</span> <span class="c1">//추가.</span>
+    <span class="nx">$paper</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="nx">clickButton</span><span class="p">);</span> <span class="c1">//추가.</span>
+    <span class="c1">//1초 뒤 실행되는 setTimeout마다 실행</span>
+    <span class="nx">intervalId</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="nx">changeComputerHand</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span>
+  <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="p">};</span>
+<span class="nx">$rock</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="nx">clickButton</span><span class="p">);</span>
+<span class="nx">$scissors</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="nx">clickButton</span><span class="p">);</span>
+<span class="nx">$paper</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="nx">clickButton</span><span class="p">);</span>
+</code></pre></div>            </div>
+          </li>
+          <li>
+            <p><code class="language-plaintext highlighter-rouge">플레그 변수 사용</code>(추천)</p>
+
+            <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">clickable</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> <span class="c1">//추가.</span>
+<span class="kd">const</span> <span class="nx">clickButton</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">clickable</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">clearInterval</span><span class="p">(</span><span class="nx">intervalId</span><span class="p">);</span>
+    <span class="nx">clickable</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">//추가.</span>
+    <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">clickable</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> <span class="c1">//추가.</span>
+      <span class="nx">intervalId</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="nx">changeComputerHand</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span>
+    <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>            </div>
+          </li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<ul>
+  <li><strong><code>diff === '고양이' || diff === '사자' || diff === '강아지' || diff === '거북이'</code><br /></strong>
+위와 같은 경우는 아래와 같이 바꿀 수 있다.<br />
+<strong><code>['고양이','사자','강아지','거북이']. includes(diff)</code></strong><br />
+또는<br />
+<strong><code>['고양이','사자','강아지','거북이']. indexOf(diff) &gt; -1</code></strong><br />
+<br /></li>
+</ul>
+:ET

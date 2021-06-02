@@ -26,6 +26,12 @@ background: "/img/portfolio.png"
 
 ### **배운 개념**
 
+<span style="color:red">1. [고차함수](#고차함수)</span><br>
+<span style="color:red">2. [event](#event)</span><br>
+<span style="color:red">3. [중첩 조건문 해결하는 법](#중첩-조건문-해결하는-법)</span><br>
+
+---
+
 - 변수를 바꾸면 화면을 바꾸는 것을 까먹지 말자! --> `$result.value += "0";`
 
 ---
