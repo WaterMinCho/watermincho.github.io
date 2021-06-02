@@ -1,0 +1,209 @@
+I"�9<h2 id="계산기"><strong>계산기</strong></h2>
+
+<h3 id="20210428"><code class="language-plaintext highlighter-rouge">2021.04.28</code></h3>
+
+<h4 id="소스코드-calculatorhtml"><span style="color:navy">소스코드: <a href="https://github.com/WaterMinCho/JS/blob/main/calculator.html" target="\_blank">calculator.html</a></span></h4>
+
+<hr />
+
+<h3 id="플로우"><strong>플로우</strong></h3>
+
+<ol>
+  <li>시작 -&gt; 숫자 1을 저장할 변수생성 -&gt; 연산자를 저장할 변수생성 -&gt; 숫자2를 저장할 변수생성 -&gt; 대기</li>
+  <li>숫자 버튼 클릭 -&gt; 숫자를 변수에 저장한다{operator변수가 비어있는가 ? numOne=숫자 : numTow=숫자} -&gt; 대기</li>
+  <li>연산자 버튼 클릭 -&gt;numOne값이 존재하는가? 연산자를 변수에 저장한다:alert(‘연산자를 입력해주세요’) -&gt; 대기</li>
+  <li>=버튼 클릭 -&gt; numTwo값이 존재하는가? 숫자1과2를 연산자를 적용하여 계산한다: alert(‘두번째 수를 입력해주세요’)-&gt; 계산 결과를 화면에 출력한다. -&gt; 끝</li>
+</ol>
+
+<hr />
+
+<h3 id="배운-개념"><strong>배운 개념</strong></h3>
+
+<p><span style="color:red">1. <a href="#고차함수">고차함수</a></span><br />
+<span style="color:red">2. <a href="#event">event</a></span><br />
+<span style="color:red">3. <a href="#중첩-조건문-해결하는-법">중첩 조건문 해결하는 법</a></span><br /></p>
+
+<hr />
+
+<ul>
+  <li>변수를 바꾸면 화면을 바꾸는 것을 까먹지 말자! –&gt; <code class="language-plaintext highlighter-rouge">$result.value += "0";</code></li>
+</ul>
+
+<hr />
+
+<ul>
+  <li>함수의 (미친듯한)중복을 제거할 때
+    <ul>
+      <li>달라지는 부분만 매개변수로 만들자</li>
+      <li>고차함수를 써서 줄일 수 있다.(함수 내에 함수 존재)</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<ul>
+  <li>
+    <h4 id="고차함수">고차함수</h4>
+
+    <p>click(~~~, onClickNumber(‘n’));의 onClickNumber가 있는 자리는 함수자리이므로 “함수값으로 리턴된 값”이 와야한다!
+추가로 onClickNumber()함수를 불러오면 undefined가 자동으로 도출되기 때문에 return에 함수형으로 정의해야하며, 중복제거시에 유용한 고차함수를 써서 더 줄이자!<br /></p>
+
+    <h3 id="20210430-추가">2021.04.30 추가</h3>
+
+    <ul>
+      <li>function()는 함수 자체가 아니다. function()은 함수의 리턴값을 가리킨다.</li>
+      <li>function은 함수 자체를 가리킨다.</li>
+      <li>따라서 return을 따로 지정하지 않으면 undefined가 리턴되기 때문에 function()은 undefined를 가리킨다!</li>
+    </ul>
+
+    <p>예시:</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">fuc</span> <span class="o">=</span> <span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+</code></pre></div>    </div>
+
+    <p>중괄호와 리턴을 생략할 수 있으니 요놈이<br /></p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">fuc</span> <span class="o">=</span> <span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>    </div>
+
+    <p>이렇게 바뀌는데 이러한 코드를 보면 항상 머리로만 하지 말고 직접 쳐보고 비교해보는 버릇을 기르자. 원리는 이렇다.<br /></p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">fuc</span> <span class="o">=</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="dl">"</span><span class="s2">{</span><span class="dl">"</span>
+<span class="dl">"</span><span class="s2">return</span><span class="dl">"</span><span class="p">()</span> <span class="o">=&gt;</span><span class="p">{</span>
+   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="dl">"</span><span class="s2">}</span><span class="dl">"</span>
+</code></pre></div>    </div>
+
+    <p>위와 같이 쌍따옴표(““)로 묶은 부분을 제거한거다.<br /><br /></p>
+  </li>
+</ul>
+
+<hr />
+
+<ul>
+  <li>
+    <h3 id="event"><strong>event</strong></h3>
+    <p>click시 함수가 호출되면 브라우저가 <code class="language-plaintext highlighter-rouge">onClickNumber()</code>식으로 함수를 실행하는데, 그때 인자값으로 <code class="language-plaintext highlighter-rouge">event</code>를 넣어주는데 그때 함수에 <code class="language-plaintext highlighter-rouge">event</code>가 전달된다.</p>
+  </li>
+</ul>
+
+<hr />
+
+<ul>
+  <li>
+    <h3 id="중첩-조건문-해결하는-법"><strong>중첩 조건문 해결하는 법</strong></h3>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">result</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">c</span><span class="dl">"</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">result</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nx">result</span> <span class="o">+=</span> <span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p><br /></p>
+  </li>
+</ul>
+
+<ol>
+  <li>
+    <p>‘if문 다음에 나오는’ 공통된 절차를 각 분기점 내부에 넣는다.</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">result</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">c</span><span class="dl">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">result</span> <span class="o">+=</span> <span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">result</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">result</span> <span class="o">+=</span> <span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>분기점에서 ‘짧은 절차’부터 실행하게 if문을 작성한다.</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//기존조건에서 반대 조건으로 변경.</span>
+    <span class="nx">result</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">result</span> <span class="o">+=</span> <span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">result</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">c</span><span class="dl">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">result</span> <span class="o">+=</span> <span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>짧은 절차가 끝나면 <code class="language-plaintext highlighter-rouge">return</code>이나 <code class="language-plaintext highlighter-rouge">break</code>로 중단한다.</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">result</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">result</span> <span class="o">+=</span> <span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span> <span class="c1">//이미 리턴이 있다.</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">result</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">c</span><span class="dl">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">result</span> <span class="o">+=</span> <span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">else</code>를 제거한다.(이때 중첩 하나가 제거된다.)</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">result</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">result</span> <span class="o">+=</span> <span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">result</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">c</span><span class="dl">"</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nx">result</span> <span class="o">+=</span> <span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>다음 중첩된 분기점이 나올 때 1~4의 과정을 반복한다.</p>
+  </li>
+</ol>
+
+<hr />
+
+<ul>
+  <li>-, *, /는 문자열이 저절로 숫자로 바뀌기 때문에 <code class="language-plaintext highlighter-rouge">parseInt</code>를 쓰지 않아도 된다.</li>
+</ul>
+:ET
