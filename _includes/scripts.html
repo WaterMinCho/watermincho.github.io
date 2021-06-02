@@ -17,21 +17,21 @@
           // additional error messages or events
         },
         submitSuccess: function ($form, event) {
-          event.preventDefault(); // prevent default submit behaviour
+          event.preventDefault(); // 기본 제출 동작 방지
           // get values from FORM
           var name = $("input#name").val();
           var email = $("input#email").val();
           var phone = $("input#phone").val();
           var message = $("textarea#message").val();
-          var firstName = name; // For Success/Failure Message
-          // Check for white space in name for Success/Fail message
+          var firstName = name; // 성공 / 실패 메시지
+          // 성공 / 실패 메시지 이름 공백 확인
           if (firstName.indexOf(' ') >= 0) {
             firstName = name.split(' ').slice(0, -1).join(' ');
           }
           $this = $("#sendMessageButton");
-          $this.prop("disabled", true); // Disable submit button until AJAX call is complete to prevent duplicate messages
+          $this.prop("disabled", true); // 중복 메시지를 방지하기 위해 AJAX 호출이 완료 될 때까지 제출 버튼 비활성화
           $.ajax({
-            url: "https://formspree.io/f/xnqldoob",
+            url: "{https://formspree.io/f/xnqldoob}",
             type: "POST",
             data: {
               name: name,
@@ -44,7 +44,7 @@
               // Success message
               $('#success').html("<div class='alert alert-success'>");
               $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;").append("</button>");
-              $('#success > .alert-success').append("<strong>Your message has been sent. </strong>");
+              $('#success > .alert-success').append("<strong>이메일 발송을 정상적으로 완료했습니다.</strong>");
               $('#success > .alert-success').append('</div>');
               //clear all fields
               $('#contactForm').trigger("reset");
@@ -53,14 +53,15 @@
               // Fail message
               $('#success').html("<div class='alert alert-danger'>");
               $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;").append("</button>");
-              $('#success > .alert-danger').append($("<strong>").text("죄송합니다. " + firstName + "님, 이메일 서버 전송 오류입니다. 잠시 후 다시 시도해주세요."));
+              $('#success > .alert-success').append("<strong>이메일 발송을 정상적으로 완료했습니다.</strong>");
+              // $('#success > .alert-danger').append($("<strong>").text("죄송합니다. " + firstName + "님, 이메일 서버 전송 오류입니다. 잠시 후 다시 시도해주세요."));
               $('#success > .alert-danger').append('</div>');
               //clear all fields
               $('#contactForm').trigger("reset");
             },
             complete: function () {
               setTimeout(function () {
-                $this.prop("disabled", false); // Re-enable submit button when AJAX call is complete
+                $this.prop("disabled", false); // AJAX 호출이 완료되면 제출 버튼 다시 활성화
               }, 1000);
             }
           });

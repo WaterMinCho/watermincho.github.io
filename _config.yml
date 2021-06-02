@@ -2,8 +2,8 @@ title: WaterMinCho's Velog
 email: whalstn9@gmail.com
 description: 물민초의 개발블로그
 author: WaterMinCho
-site.baseurl: "/home"
-site.url: "https://watermincho.github.io/"
+site.baseurl: "/"
+url: "https://watermincho.github.io/"
 
 # Social Profiles
 twitter_username:
