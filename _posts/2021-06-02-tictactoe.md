@@ -21,6 +21,8 @@ background: "/img/portfolio.png"
 - <center><img src="https://user-images.githubusercontent.com/74204327/116865069-e635bd80-ac43-11eb-846f-d34b6f1dfc49.png" width="80%" height="auto"></center>
     <!-- <p align="center"><img src = https://user-images.githubusercontent.com/74204327/116865069-e635bd80-ac43-11eb-846f-d34b6f1dfc49.png height = 350px width = 430px></p> -->
 
+---
+
 ### **배운 개념**
 
 <span style="color:red">1. [구조분해 할당](#구조분해-할당)</span><br>
