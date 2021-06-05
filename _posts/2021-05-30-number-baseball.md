@@ -17,7 +17,7 @@ background: "/img/portfolio.png"
 ### **플로우**
 
 - 최초 플로우
-  <center><img src="https://user-images.githubusercontent.com/74204327/116469803-922a8200-a8ad-11eb-80d5-03abfac0124a.png" width="75%" height="auto"></center>
+  <center><img src="https://user-images.githubusercontent.com/74204327/116469803-922a8200-a8ad-11eb-80d5-03abfac0124a.png" width="75%" height="auto" alt ="알고리즘"></center>
   <!-- <p align = "center"> <img src = https://user-images.githubusercontent.com/74204327/116469803-922a8200-a8ad-11eb-80d5-03abfac0124a.png width=500px></p> -->
 
 - 두 번째 플로우(3진 아웃 추가)

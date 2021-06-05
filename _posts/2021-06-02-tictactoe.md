@@ -18,7 +18,7 @@ background: "/img/portfolio.png"
 
 - 3x3 표 위에서 삼목과 같은 룰로 진행하는 게임이다. 자바스크립트에선 이차원 배열로 표현한다.
 
-- <center><img src="https://user-images.githubusercontent.com/74204327/116865069-e635bd80-ac43-11eb-846f-d34b6f1dfc49.png" width="80%" height="auto"></center>
+- <center><img src="https://user-images.githubusercontent.com/74204327/116865069-e635bd80-ac43-11eb-846f-d34b6f1dfc49.png" width="80%" height="auto" alt ="알고리즘"></center>
     <!-- <p align="center"><img src = https://user-images.githubusercontent.com/74204327/116865069-e635bd80-ac43-11eb-846f-d34b6f1dfc49.png height = 350px width = 430px></p> -->
 
 ---

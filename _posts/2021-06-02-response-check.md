@@ -16,7 +16,7 @@ background: "/img/portfolio.png"
 
 ### **플로우**
 
-- <center><img src="https://user-images.githubusercontent.com/74204327/116807565-d39d8480-ab6e-11eb-8c35-577dbf3b6aab.png" width="70%" height="auto"></center>
+- <center><img src="https://user-images.githubusercontent.com/74204327/116807565-d39d8480-ab6e-11eb-8c35-577dbf3b6aab.png " width="70%" height="auto" alt ="알고리즘"></center>
   <!-- <p align="center"><img src = https://user-images.githubusercontent.com/74204327/116807565-d39d8480-ab6e-11eb-8c35-577dbf3b6aab.png height = 600px width = 700px></p> -->
 
 ---
