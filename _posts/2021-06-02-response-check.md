@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "반응속도 테스트"
-subtitle: "자바스크립트 실습 6일차.<br>"
+subtitle: "자바스크립트 실습 6일차"
 date: 2021.06.02 01:00:00
 background: "/img/portfolio.png"
 ---

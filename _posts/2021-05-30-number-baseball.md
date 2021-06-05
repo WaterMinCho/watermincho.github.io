@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "숫자야구"
-subtitle: "자바스크립트 실습 3일차.<br>"
+subtitle: "자바스크립트 실습 3일차"
 date: 2021.05.30 01:00:00
 background: "/img/portfolio.png"
 ---

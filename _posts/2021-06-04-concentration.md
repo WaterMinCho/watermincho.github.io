@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "카드 짝맞추기(feat.이벤트루프)"
-subtitle: "자바스크립트 실습 9일차."
+subtitle: "자바스크립트 실습 9일차"
 date: 2021.06.04 18:00:00
 background: "/img/portfolio.png"
 ---
